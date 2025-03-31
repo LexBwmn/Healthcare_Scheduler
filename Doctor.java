@@ -8,4 +8,11 @@ public class Doctor {
         this.Department = Department;
         this.Specility = Specility;
     }
+    
+    @Override
+    // returns doctor information
+    public String toString() {
+        return "Name :" + Name + " Department :" + Department + ", Speciality : " + Specility;
+    }
 }
+

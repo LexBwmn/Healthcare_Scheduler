@@ -12,4 +12,9 @@ public class Appointment {
         this.RoomNum = RoomNum;
         this.dateTime = dateTime;
     }
+    @Override
+    // return patient information and location / roomnum 
+    public String toString() {
+        return patient + " has an appointment with " + doctor + " on " + dateTime + "in Room: " + RoomNum;
+    }
 }

@@ -8,4 +8,10 @@ public class Patient {
         this.age = age;
         this.contactInfo = contactInfo;
     }
+
+    @Override
+    //returns patient information
+    public String toString() {
+        return "Name :" + Name + "Age" + age + ",Contact Infromation: " + contactInfo;
+    }
 }
