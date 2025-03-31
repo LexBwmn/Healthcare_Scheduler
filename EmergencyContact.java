@@ -10,5 +10,9 @@ public class EmergencyContact {
         this.Relationship = Relationship;
         this.phonenumber = phonenumber;
     }
-    
+    @Override
+    public String toString() {
+        return "Emergency Contact: " + name + ", Phone: " + phonenumber;
+    }
+
 }

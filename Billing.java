@@ -9,4 +9,9 @@ public class Billing {
         this.amonutDue = amonutDue;
         this.payment = false;
     }
+    // bill generation function java 
+    public static void CreateBill(Patient patient, double amountdue) {
+        // prints out bill information for a specific patient 
+        System.out.println("Bill for " + patient + ": $" + amountdue);
+    }
 }
