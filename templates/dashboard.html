@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - OptiCare Scheduler</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dashboard - OptiCare</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h2>Welcome to the Dashboard</h2>
+    <div class="container">
+        <h2>Welcome to the Dashboard</h2>
+        <div class="navbar">
+            <a href="/schedule">➕ New Appointment</a> |
+            <a href="/consult">📞 Virtual Consult</a> |
+            <a href="/insurance">🛡 Insurance Check</a> |
+            <a href="/logout">🚪 Logout</a>
+        </div>
 
-    <a href="/schedule">📅 New Appointment</a>
-    <a href="/consult">📞 Virtual Consult</a>
-    <a href="/insurance">🛡️ Insurance Check</a>
-    <a href="/logout">🚪 Logout</a>
-
-    <h3>Upcoming Appointments</h3>
-    <ul>
-        {% for appt in appointments %}
-            <li>
-                <strong>{{ appt.name }}</strong> - {{ appt.doctor }} at {{ appt.time }}
-                <a href="/cancel/{{ appt.id }}">Cancel ❌</a>
-            </li>
-        {% else %}
-            <li>No appointments found.</li>
-        {% endfor %}
-    </ul>
+        <h3>Upcoming Appointments</h3>
+        <ul>
+            {% for appt in appointments %}
+                <li>
+                    <span><strong>{{ appt.name }}</strong> - {{ appt.doctor }} at {{ appt.time }}</span>
+                    <a href="/cancel/{{ appt.id }}" class="cancel-btn">Cancel ❌</a>
+                </li>
+            {% else %}
+                <li>No appointments found.</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

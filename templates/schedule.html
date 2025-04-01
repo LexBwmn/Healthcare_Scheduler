@@ -1,23 +1,45 @@
+<!-- templates/schedule.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Schedule - OptiCare Scheduler</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Schedule Appointment</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script>
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.className = "show";
+            setTimeout(() => toast.className = toast.className.replace("show", ""), 3000);
+        }
+
+        window.onload = () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success')) {
+                showToast("Appointment added successfully!");
+            }
+        };
+    </script>
 </head>
 <body>
-    <h2>Schedule an Appointment</h2>
-    <form method="POST">
-        <label>Patient Name:</label><br>
-        <input type="text" name="name" required><br>
+    <div class="container">
+        <h2>Schedule an Appointment</h2>
+        <form method="POST">
+            <label>Patient Name:</label>
+            <input type="text" name="name" required>
 
-        <label>Doctor Name:</label><br>
-        <input type="text" name="doctor" required><br>
+            <label>Doctor Name:</label>
+            <input type="text" name="doctor" required>
 
-        <label>Time:</label><br>
-        <input type="text" name="time" required><br>
+            <label>Time:</label>
+            <input type="datetime-local" name="time" required>
 
-        <button type="submit">Submit</button>
-    </form>
-    <a href="/dashboard">Back to Dashboard</a>
+            <button type="submit">Submit</button>
+        </form>
+        <br>
+        <a href="/dashboard">Back to Dashboard</a>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast"></div>
 </body>
 </html>

@@ -55,7 +55,7 @@ def schedule():
         appt = Appointment(name=name, doctor=doctor, time=time)
         db.session.add(appt)
         db.session.commit()
-        return redirect('/dashboard')
+        return redirect('/schedule?success=true')  # ✨ New line for toast
     return render_template('schedule.html')
 
 @app.route('/cancel/<int:id>')

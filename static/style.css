@@ -1,59 +1,161 @@
+/* static/style.css */
 body {
-    font-family: Arial, sans-serif;
-    margin: 30px;
-    background-color: #f9f9f9;
-    color: #333;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #e3f2fd, #fce4ec);
+    margin: 0;
+    padding: 0;
+    animation: fadeIn 0.6s ease-in;
 }
 
 h2, h3 {
+    text-align: center;
     color: #2c3e50;
+    font-weight: 600;
 }
 
-input[type="text"], input[type="email"], input[type="password"], textarea {
-    width: 300px;
-    padding: 10px;
-    margin: 6px 0;
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #ffffffcc;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    animation: slideUp 0.6s ease-in;
+    backdrop-filter: blur(5px);
+    border: 1px solid #e3e3e3;
+    transition: transform 0.4s ease;
+}
+
+.container:hover {
+    transform: scale(1.01);
+}
+
+form input, form textarea, form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 18px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: 'Poppins', sans-serif;
 }
 
-button, input[type="submit"] {
-    background-color: #3498db;
+form input:focus, form textarea:focus {
+    border-color: #2196f3;
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+    outline: none;
+}
+
+form button {
+    background-color: #2196f3;
     color: white;
+    font-weight: bold;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-button:hover, input[type="submit"]:hover {
-    background-color: #2980b9;
+form button:hover {
+    background-color: #1976d2;
+    transform: scale(1.02);
 }
 
 a {
-    color: #3498db;
+    color: #1976d2;
     text-decoration: none;
-    margin: 0 10px;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
+    color: #0d47a1;
 }
 
-form {
+.navbar {
+    text-align: center;
     margin-bottom: 20px;
+}
+
+.navbar a {
+    margin: 0 12px;
+    color: #444;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 ul {
     list-style-type: none;
     padding-left: 0;
+    text-align: left;
 }
 
 li {
-    padding: 8px;
-    background: #fff;
-    margin: 6px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 14px;
+    background: #f9f9f9;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    animation: fadeIn 0.8s ease-in;
+}
+
+.cancel-btn {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.cancel-btn:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Toast Notification */
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 12px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 16px;
+}
+
+#toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from { bottom: 0; opacity: 0; }
+    to { bottom: 30px; opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { bottom: 30px; opacity: 1; }
+    to { bottom: 0; opacity: 0; }
 }
