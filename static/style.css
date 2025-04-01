@@ -1,7 +1,8 @@
 /* static/style.css */
 body {
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #e3f2fd, #fce4ec);
+    background: linear-gradient(to right, #e3f2fd, #fce4ec), url("/static/logo.png") no-repeat center 80px;
+    background-size: 120px;
     margin: 0;
     padding: 0;
     animation: fadeIn 0.6s ease-in;

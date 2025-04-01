@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - OptiCare</title>
+    <title>Dashboard - OptiCare Scheduler</title>
     <link rel="stylesheet" href="/static/style.css">
+    <script>
+        function confirmCancel(name) {
+            return confirm("Are you sure you want to cancel the appointment for " + name + "?");
+        }
+        function filterByDoctor() {
+            const doctor = document.getElementById("doctorSelect").value;
+            window.location.href = `/dashboard?doctor=${doctor}`;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h2>Welcome to the Dashboard</h2>
         <div class="navbar">
-            <a href="/schedule">➕ New Appointment</a> |
-            <a href="/consult">📞 Virtual Consult</a> |
-            <a href="/insurance">🛡 Insurance Check</a> |
+            <a href="/schedule">+ New Appointment</a> |
+            <a href="/consult">🩺 Virtual Consult</a> |
+            <a href="/insurance">🛡️ Insurance Check</a> |
             <a href="/logout">🚪 Logout</a>
         </div>
 
         <h3>Upcoming Appointments</h3>
+
+        <!-- Doctor Filter Dropdown -->
+        {% if doctors %}
+        <div style="margin-bottom: 20px;">
+            <label for="doctorSelect"><strong>Filter by Doctor:</strong></label>
+            <select id="doctorSelect" onchange="filterByDoctor()">
+                <option value="">-- All Doctors --</option>
+                {% for doc in doctors %}
+                    <option value="{{ doc }}" {% if request.args.get('doctor') == doc %}selected{% endif %}>{{ doc }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endif %}
+
         <ul>
             {% for appt in appointments %}
                 <li>
-                    <span><strong>{{ appt.name }}</strong> - {{ appt.doctor }} at {{ appt.time }}</span>
-                    <a href="/cancel/{{ appt.id }}" class="cancel-btn">Cancel ❌</a>
+                    <span><strong>{{ appt.name }}</strong> — {{ appt.doctor }} at {{ appt.time }}</span>
+                    <a class="cancel-btn" href="/cancel/{{ appt.id }}" onclick="return confirmCancel('{{ appt.name }}')">🗑️</a>
                 </li>
             {% else %}
                 <li>No appointments found.</li>

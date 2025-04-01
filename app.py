@@ -32,7 +32,7 @@ def login():
     if user and check_password_hash(user.password, password):
         session['user_id'] = user.id
         return redirect('/dashboard')
-    return 'Invalid credentials'
+    return render_template('login.html', error=True)
 
 @app.route('/dashboard')
 def dashboard():
