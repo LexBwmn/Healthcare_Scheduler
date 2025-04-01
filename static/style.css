@@ -1,11 +1,23 @@
 /* static/style.css */
 body {
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #e3f2fd, #fce4ec), url("/static/logo.png") no-repeat center 80px;
-    background-size: 120px;
     margin: 0;
     padding: 0;
+    background: linear-gradient(to right, #e3f2fd, #fce4ec);
     animation: fadeIn 0.6s ease-in;
+    position: relative;
+}
+
+/* 🩺 Watermark Background */
+body::before {
+    content: "";
+    background: url("/static/logo.png") no-repeat center 30%;
+    background-size: 280px;
+    opacity: 0.07;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    pointer-events: none;
 }
 
 h2, h3 {
@@ -14,6 +26,7 @@ h2, h3 {
     font-weight: 600;
 }
 
+/* 🔲 Main Form/Card */
 .container {
     max-width: 600px;
     margin: 40px auto;
@@ -31,7 +44,7 @@ h2, h3 {
     transform: scale(1.01);
 }
 
-form input, form textarea, form button {
+form input, form textarea, form button, select {
     display: block;
     width: 100%;
     margin-bottom: 18px;
@@ -43,7 +56,7 @@ form input, form textarea, form button {
     font-family: 'Poppins', sans-serif;
 }
 
-form input:focus, form textarea:focus {
+form input:focus, form textarea:focus, select:focus {
     border-color: #2196f3;
     box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
     outline: none;
@@ -63,6 +76,7 @@ form button:hover {
     transform: scale(1.02);
 }
 
+/* 🔗 Links */
 a {
     color: #1976d2;
     text-decoration: none;
@@ -75,9 +89,21 @@ a:hover {
     color: #0d47a1;
 }
 
+/* 📌 Top Navigation */
 .navbar {
     text-align: center;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.navbar img {
+    width: 32px;
+    height: 32px;
+    margin-right: 6px;
+    vertical-align: middle;
 }
 
 .navbar a {
@@ -87,6 +113,7 @@ a:hover {
     font-size: 16px;
 }
 
+/* 📋 Appointment List */
 ul {
     list-style-type: none;
     padding-left: 0;
@@ -106,6 +133,7 @@ li {
     animation: fadeIn 0.8s ease-in;
 }
 
+/* ❌ Cancel Button */
 .cancel-btn {
     color: red;
     font-weight: bold;
@@ -119,17 +147,7 @@ li {
     transform: scale(1.1);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to   { transform: translateY(0); opacity: 1; }
-}
-
-/* Toast Notification */
+/* 🍞 Toast Notification */
 #toast {
     visibility: hidden;
     min-width: 250px;
@@ -139,7 +157,7 @@ li {
     border-radius: 4px;
     padding: 12px;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 50%;
     bottom: 30px;
     transform: translateX(-50%);
@@ -149,6 +167,17 @@ li {
 #toast.show {
     visibility: visible;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* ✨ Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes fadein {
