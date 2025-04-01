@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Consult - OptiCare Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Request Virtual Consultation</h2>
+    <form method="POST">
+        <label>Patient Name:</label><br>
+        <input type="text" name="patient" required><br>
+
+        <label>Reason:</label><br>
+        <textarea name="reason" required></textarea><br>
+
+        <button type="submit">Submit Request</button>
+    </form>
+    <a href="/dashboard">Back to Dashboard</a>
+</body>
+</html>
